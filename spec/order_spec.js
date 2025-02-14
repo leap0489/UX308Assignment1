@@ -86,6 +86,28 @@ describe("Tests all stages of an order", function() {
         const aResults5 = oOrder.handleInput("no");
         expect(aResults5[0]).toBe("No worries, Are you ready to confirm your order?")
     });
+    it("test order confirmation", function() {
+        const oOrder = new Order("999-999-9999");
+        oOrder.handleInput("hello")
+        const aResults = oOrder.handleInput("yes");
+        const aResults2 = oOrder.handleInput("classic");
+        const aResults3 = oOrder.handleInput("5");
+        const aResults4 = oOrder.handleInput("no");
+        const aResults5 = oOrder.handleInput("no");
+        const aResults6 = oOrder.handleInput("yes");
+        expect(aResults6[0]).toBe("Awesome, we'll have that ready to pick up in 15 mins at our Brantford location: 123 Dalhousie St.")
+    });
+    it("test order not confirmed", function() {
+        const oOrder = new Order("999-999-9999");
+        oOrder.handleInput("hello")
+        const aResults = oOrder.handleInput("yes");
+        const aResults2 = oOrder.handleInput("classic");
+        const aResults3 = oOrder.handleInput("5");
+        const aResults4 = oOrder.handleInput("no");
+        const aResults5 = oOrder.handleInput("no");
+        const aResults6 = oOrder.handleInput("no");
+        expect(aResults6[0]).toBe("Please confirm you are ready to order to continue")
+    });
   });
   
   
