@@ -28,6 +28,8 @@ export class Order {
           } else if (sInput.toLowerCase().includes('classic')){
             aReturn.push("Classic it is! Do you want a 3 or 5 piece");
             this.stateCur = this.OrderState.CHICKEN_QUANTITY;
+          } else {
+            aReturn.push("Sorry, I don't quite understand. Try visiting our shop at 123 Dalhousie St. in Brantford to place your order. Thank you!");
           }
           return aReturn;
         },
@@ -40,6 +42,8 @@ export class Order {
           } else if (sInput.toLowerCase().includes('5')){
             aReturn.push("5 pieces sounds fantastic, do you want to toss your chicken in our world famous honey BBQ glaze?");
             this.stateCur = this.OrderState.TOPPINGS;
+          } else {
+            aReturn.push("Sorry, I don't quite understand. Try visiting our shop at 123 Dalhousie St. in Brantford to place your order. Thank you!");
           }
           return aReturn;
         },
@@ -49,9 +53,11 @@ export class Order {
           if (sInput.toLowerCase().startsWith('y')) {
             aReturn.push("Honey BBQ all the way! Do you want to add fries to your chicken?");
             this.stateCur = this.OrderState.SIDES;
-          } else {
+          } else if (sInput.toLowerCase().startsWith('n')) {
             aReturn.push("No problem. Do you want to add fries to your chicken?");
             this.stateCur = this.OrderState.SIDES;
+          } else {
+            aReturn.push("Sorry, I don't quite understand. Try visiting our shop at 123 Dalhousie St. in Brantford to place your order. Thank you!");
           }
           return aReturn;
         },
@@ -61,9 +67,11 @@ export class Order {
           if (sInput.toLowerCase().startsWith('y')) {
             aReturn.push("Perfect, we'll throw those on the order! Are you ready to confirm your order?");
             this.stateCur = this.OrderState.CONFIRMATION;
-          } else {
+          } else if (sInput.toLowerCase().startsWith('n')) {
             aReturn.push("No worries, Are you ready to confirm your order?");
             this.stateCur = this.OrderState.CONFIRMATION;
+          } else {
+            aReturn.push("Sorry, I don't quite understand. Try visiting our shop at 123 Dalhousie St. in Brantford to place your order. Thank you!");
           }
           return aReturn;
         },
