@@ -18,6 +18,20 @@ describe("Tests all stages of an order", function() {
         const aResults = oOrder.handleInput("no");
         expect(aResults[0]).toBe("Thanks! Maybe next time :)")
     });
+    it("test spicy", function() {
+        const oOrder = new Order("999-999-9999");
+        oOrder.handleInput("hello")
+        const aResults = oOrder.handleInput("yes");
+        const aResults2 = oOrder.handleInput("spicy");
+        expect(aResults2[0]).toBe("Spicy it is! Do you want a 3 or 5 piece")
+    });
+    it("test classic", function() {
+        const oOrder = new Order("999-999-9999");
+        oOrder.handleInput("hello")
+        const aResults = oOrder.handleInput("yes");
+        const aResults2 = oOrder.handleInput("classic");
+        expect(aResults2[0]).toBe("Classic it is! Do you want a 3 or 5 piece")
+    });
   });
   
   
