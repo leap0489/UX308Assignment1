@@ -4,24 +4,81 @@ export class Order {
         WELCOMING: () => {
           let aReturn = [];
           this.stateCur = this.OrderState.RESERVING;
-          aReturn.push("Welcome to Rich's Acton Rapid Test.");
-          aReturn.push("Would you like to reserve a rapid test kit?");
+          aReturn.push("Welcome to Laynol's Chicken Tender Shop!");
+          aReturn.push("Would you like to start an order?");
           return aReturn;
         },
         RESERVING: (sInput) => {
           let aReturn = [];
-          this.isDone = true;
+          this.isDone = false;
           if (sInput.toLowerCase().startsWith('y')) {
-            aReturn.push(`Your rapid test is reserved under the phone number ${this.sFrom}`);
-            let d = new Date();
-            d.setMinutes(d.getMinutes() + 120);
-            aReturn.push(`Please pick it up at 123 Tidy St., Acton before ${d.toTimeString()}`);
+            aReturn.push("Awesome, our tenders come in classic or spicy. Which would you like?");
+            this.stateCur = this.OrderState.CHICKEN_TYPE;
           } else {
-            aReturn.push("Thanks for trying our reservation system");
-            aReturn.push("Maybe next time")
+            aReturn.push("Thanks! Maybe next time :)");
           }
           return aReturn;
-        }
+        },
+        CHICKEN_TYPE: (sInput) => {
+          let aReturn = [];
+          this.isDone = false;
+          if (sInput.toLowerCase().includes('spicy')) {
+            aReturn.push("Spicy it is! Do you want a 3 or 5 piece");
+            this.stateCur = this.OrderState.CHICKEN_QUANTITY;
+          } else if (sInput.toLowerCase().includes('classic')){
+            aReturn.push("Classic it is! Do you want a 3 or 5 piece");
+            this.stateCur = this.OrderState.CHICKEN_QUANTITY;
+          }
+          return aReturn;
+        },
+        CHICKEN_QUANTITY: (sInput) => {
+          let aReturn = [];
+          this.isDone = false;
+          if (sInput.toLowerCase().includes('3')) {
+            aReturn.push("3 pieces sounds fantastic, do you want to toss your chicken in our world famous honey BBQ glaze?");
+            this.stateCur = this.OrderState.TOPPINGS;
+          } else if (sInput.toLowerCase().includes('5')){
+            aReturn.push("5 pieces sounds fantastic, do you want to toss your chicken in our world famous honey BBQ glaze?");
+            this.stateCur = this.OrderState.TOPPINGS;
+          }
+          return aReturn;
+        },
+        TOPPINGS: (sInput) => {
+          let aReturn = [];
+          this.isDone = false;
+          if (sInput.toLowerCase().startsWith('y')) {
+            aReturn.push("Honey BBQ all the way! Do you want to add fries to your chicken?");
+            this.stateCur = this.OrderState.SIDES;
+          } else {
+            aReturn.push("No problem. Do you want to add fries to your chicken?");
+            this.stateCur = this.OrderState.SIDES;
+          }
+          return aReturn;
+        },
+        SIDES: (sInput) => {
+          let aReturn = [];
+          this.isDone = false;
+          if (sInput.toLowerCase().startsWith('y')) {
+            aReturn.push("Perfect, we'll throw those on the order! Are you ready to confirm your order?");
+            this.stateCur = this.OrderState.CONFIRMATION;
+          } else {
+            aReturn.push("No worries, Are you ready to confirm your order?");
+            this.stateCur = this.OrderState.CONFIRMATION;
+          }
+          return aReturn;
+        },
+        CONFIRMATION: (sInput) => {
+          let aReturn = [];
+          this.isDone = true;
+          if (sInput.toLowerCase().startsWith('y')) {
+            aReturn.push("Awesome, we'll have that ready to pick up in 15 mins at our Brantford location: 123 Dalhousie St.");
+            aReturn.push("You ordered " + sInput + " chicken (type: " + this.chosenChicken + ")");
+            this.stateCur = this.OrderState.CONFIRMATION;
+          } else {
+            aReturn.push("Please confirm you are ready to order to continue");
+          }
+          return aReturn;
+        },
       };
   
       this.stateCur = this.OrderState.WELCOMING;
