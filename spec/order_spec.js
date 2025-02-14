@@ -66,6 +66,26 @@ describe("Tests all stages of an order", function() {
         const aResults4 = oOrder.handleInput("no");
         expect(aResults4[0]).toBe("No problem. Do you want to add fries to your chicken?")
     });
+    it("test with fries", function() {
+        const oOrder = new Order("999-999-9999");
+        oOrder.handleInput("hello")
+        const aResults = oOrder.handleInput("yes");
+        const aResults2 = oOrder.handleInput("classic");
+        const aResults3 = oOrder.handleInput("5");
+        const aResults4 = oOrder.handleInput("no");
+        const aResults5 = oOrder.handleInput("yes");
+        expect(aResults5[0]).toBe("Perfect, we'll throw those on the order! Are you ready to confirm your order?")
+    });
+    it("test without fries", function() {
+        const oOrder = new Order("999-999-9999");
+        oOrder.handleInput("hello")
+        const aResults = oOrder.handleInput("yes");
+        const aResults2 = oOrder.handleInput("classic");
+        const aResults3 = oOrder.handleInput("5");
+        const aResults4 = oOrder.handleInput("no");
+        const aResults5 = oOrder.handleInput("no");
+        expect(aResults5[0]).toBe("No worries, Are you ready to confirm your order?")
+    });
   });
   
   
