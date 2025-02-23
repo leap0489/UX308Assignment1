@@ -80,7 +80,6 @@ export class Order {
           this.isDone = true;
           if (sInput.toLowerCase().startsWith('y')) {
             aReturn.push("Awesome, we'll have that ready to pick up in 15 mins at our Brantford location: 123 Dalhousie St.");
-            aReturn.push("You ordered " + sInput + " chicken (type: " + this.chosenChicken + ")");
             this.stateCur = this.OrderState.CONFIRMATION;
           } else {
             aReturn.push("Please confirm you are ready to order to continue");
