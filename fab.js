@@ -43,7 +43,7 @@ document.querySelector("body").insertAdjacentHTML("beforeend", `
         position: absolute;
         bottom: 1em;
         right: 1em;
-        color: blue;
+        color = blue:
     }
     #clear${suffix}{
         position: absolute;
@@ -55,6 +55,6 @@ document.querySelector("body").insertAdjacentHTML("beforeend", `
     `);
 
 document.querySelector(`#fab${suffix}`).addEventListener("click", evt=>{
-    const blur = new Blur(`<div id="modal${suffix}"><div><x-chat /></div><button id="clear${suffix}">clear</button></div>`);
+    const blur = new Blur(`<div id="modal${suffix}"><div><x-chat /></div><button id="Close${suffix}">clear</button></div>`);
     document.querySelector(`#clear${suffix}`).addEventListener("click", () => blur.close());
 });
