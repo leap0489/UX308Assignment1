@@ -43,8 +43,8 @@ document.querySelector("body").insertAdjacentHTML("beforeend", `
         position: absolute;
         bottom: 1em;
         right: 1em;
-        color: blue;
-        padding: 16px;
+        color: #D1FFE7;
+
     }
     #clear${suffix}{
         position: absolute;
