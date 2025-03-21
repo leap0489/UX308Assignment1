@@ -45,12 +45,6 @@ document.querySelector("body").insertAdjacentHTML("beforeend", `
         right: 1em;
         background-color: #870505;
         color: white;
-        padding: 1em,;
-    }
-    #modal${suffix}{
-        position: absolute;
-        bottom: 1em;
-        right: 1em;
     }
     #clear${suffix}{
         position: absolute;
