@@ -47,6 +47,7 @@ document.querySelector("body").insertAdjacentHTML("beforeend", `
     .button{
         background-color: #870505;
         color: white;
+        padding: 16px;
     }
     #clear${suffix}{
         position: absolute;
