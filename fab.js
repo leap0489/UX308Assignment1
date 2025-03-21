@@ -50,10 +50,10 @@ document.querySelector("body").insertAdjacentHTML("beforeend", `
         right: 1em;
     }
     </style>
-    <button id="fab${suffix}">Order online</button>
+    <button id="fab${suffix}">Tell me</button>
     `);
 
 document.querySelector(`#fab${suffix}`).addEventListener("click", evt=>{
-    const blur = new Blur(`<div id="modal${suffix}"><div><x-chat /></div><button id="Close${suffix}">clear</button></div>`);
+    const blur = new Blur(`<div id="modal${suffix}"><div><x-chat /></div><button id="clear${suffix}">clear</button></div>`);
     document.querySelector(`#clear${suffix}`).addEventListener("click", () => blur.close());
 });
