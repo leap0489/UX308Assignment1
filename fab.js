@@ -43,8 +43,6 @@ document.querySelector("body").insertAdjacentHTML("beforeend", `
         position: absolute;
         bottom: 1em;
         right: 1em;
-    }
-    .button{
         background-color: #870505;
         color: white;
         padding: 16px;
